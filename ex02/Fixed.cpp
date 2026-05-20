@@ -1,4 +1,6 @@
 #include "Fixed.hpp"
+#include <cstdint>
+#include <cmath>
 
 Fixed::Fixed() : fpoint(0) {
     std::cout << "Default constructor called" << std::endl;
@@ -89,12 +91,14 @@ Fixed Fixed::operator-(const Fixed& aritmop) const {
 
 Fixed Fixed::operator*(const Fixed& aritmop) const {
     Fixed val;
-    val.fpoint = this->fpoint * aritmop.fpoint;
-    return val;
-}
-
-Fixed Fixed::operator/(const Fixed& aritmop) const {
-    Fixed val;
-    val.fpoint = this->fpoint / aritmop.fpoint;
+    int64_t product = int64_t(this->fpoint) * int64_t(aritmop.fpoint);
+    int64_t scale = int64_t(1) << bits;
+    int64_t adjusted;
+    if (product >= 0)
+        adjusted = product + scale / 2;
+    else
+        adjusted = product - scale / 2;
+    int result = static_cast<int>(adjusted / scale);
+    val.fpoint = result;
     return val;
 }
