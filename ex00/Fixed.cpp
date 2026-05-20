@@ -5,7 +5,7 @@ Fixed::Fixed() : fpoint(0) {
 }
 
 Fixed::~Fixed() {
-    std::cout << "Deconstructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) : fpoint(other.fpoint) {
