@@ -91,14 +91,37 @@ Fixed Fixed::operator-(const Fixed& aritmop) const {
 
 Fixed Fixed::operator*(const Fixed& aritmop) const {
     Fixed val;
-    int64_t product = int64_t(this->fpoint) * int64_t(aritmop.fpoint);
-    int64_t scale = int64_t(1) << bits;
-    int64_t adjusted;
-    if (product >= 0)
-        adjusted = product + scale / 2;
-    else
-        adjusted = product - scale / 2;
-    int result = static_cast<int>(adjusted / scale);
-    val.fpoint = result;
+    int64_t product = static_cast<int64_t>(this->fpoint) * static_cast<int64_t>(aritmop.fpoint);
+    val.fpoint = product / ((int64_t)1 << bits);
     return val;
+}
+
+Fixed Fixed::operator/(const Fixed& aritmop) const {
+    Fixed val;
+    if(aritmop.fpoint == 0)
+    {
+        std::cout << "Can't divide by 0" << std::endl;
+        return val;
+    }
+    int64_t scaled_num = ((int64_t)this->fpoint) << bits;
+    int64_t result = scaled_num / ((int64_t)aritmop.fpoint);
+    val.fpoint = static_cast<int>(result);
+    return val;
+}
+
+Fixed& Fixed::operator++() {
+    Fixed obj;
+    
+}
+
+Fixed Fixed::operator++(int) {
+
+}
+
+Fixed& Fixed::operator--() {
+
+}
+
+Fixed Fixed::operator--(int) {
+
 }
