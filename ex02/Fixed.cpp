@@ -110,18 +110,51 @@ Fixed Fixed::operator/(const Fixed& aritmop) const {
 }
 
 Fixed& Fixed::operator++() {
-    Fixed obj;
-    
+    ++this->fpoint;
+    return *this;
 }
 
 Fixed Fixed::operator++(int) {
-
+    Fixed cpy(*this);
+    ++this->fpoint;
+    return cpy;
 }
 
 Fixed& Fixed::operator--() {
-
+    --this->fpoint;
+    return *this;
 }
 
 Fixed Fixed::operator--(int) {
+    Fixed cpy(*this);
+    --this->fpoint;
+    return cpy;
+}
 
+Fixed& Fixed::min(Fixed& a, Fixed& b) {
+    if(a < b)
+        return a;
+    else
+        return b;    
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b) {
+    if(a > b)
+        return a;
+    else
+        return b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
+    if(a < b)
+        return a;
+    else
+        return b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
+    if(a > b)
+        return a;
+    else
+        return b;
 }
