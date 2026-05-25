@@ -5,7 +5,7 @@
 
 class Fixed {
     private:
-        int fpoint = 0;
+        int fpoint;
         static const int bits = 8;
     public:
         Fixed();

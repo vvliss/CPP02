@@ -54,27 +54,27 @@ std::ostream& operator<<(std::ostream& os, const Fixed& f) {
 }
 
 bool Fixed::operator>(const Fixed& comop) const {
-    return this->fpoint>comop.fpoint;
+    return this->fpoint > comop.fpoint;
 }
 
 bool Fixed::operator<(const Fixed& comop) const {
-    return this->fpoint<comop.fpoint;
+    return this->fpoint < comop.fpoint;
 }
 
 bool Fixed::operator>=(const Fixed& comop) const {
-    return this->fpoint>=comop.fpoint;
+    return this->fpoint >= comop.fpoint;
 }
 
 bool Fixed::operator<=(const Fixed& comop) const {
-    return this->fpoint<=comop.fpoint;
+    return this->fpoint <= comop.fpoint;
 }
 
 bool Fixed::operator==(const Fixed& comop) const {
-    return this->fpoint==comop.fpoint;
+    return this->fpoint == comop.fpoint;
 }
 
 bool Fixed::operator!=(const Fixed& comop) const {
-    return this->fpoint!=comop.fpoint;
+    return this->fpoint != comop.fpoint;
 }
 
 Fixed Fixed::operator+(const Fixed& aritmop) const {
